@@ -1,13 +1,13 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-      <nuxt-link tag="a" class="navbar-brand" to="/" exact>
-        🏎
-      </nuxt-link>
+      <nuxt-link tag="a" class="navbar-brand" to="/" exact>🏎</nuxt-link>
       <div class="collapse navbar-collapse justify-content-end">
         <ul class="navbar-nav">
           <li v-if="username">
-            <a href="#" class="nav-link"> Hello {{ username }} </a>
+            <a href="#" class="nav-link">
+              Hello {{ username }}
+            </a>
           </li>
           <li v-if="username">
             <a href="#" class="nav-link" @click="logout">
@@ -15,24 +15,12 @@
             </a>
           </li>
           <li v-if="!username">
-            <nuxt-link
-              v-if="!username"
-              tag="a"
-              class="nav-link"
-              to="/signin"
-              exact
-            >
+            <nuxt-link v-if="!username" tag="a" class="nav-link" to="/signin" exact>
               Signin
             </nuxt-link>
           </li>
           <li v-if="!username">
-            <nuxt-link
-              v-if="!username"
-              tag="a"
-              class="nav-link"
-              to="/signup"
-              exact
-            >
+            <nuxt-link v-if="!username" tag="a" class="nav-link" to="/signup" exact>
               Signup
             </nuxt-link>
           </li>
@@ -55,5 +43,5 @@ export default {
       logout: 'auth/logout'
     })
   }
-}
+} // 
 </script>
