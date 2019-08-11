@@ -1,9 +1,9 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-      <router-link tag="a" class="navbar-brand" to="/" exact>
+      <nuxt-link tag="a" class="navbar-brand" to="/" exact>
         🏎
-      </router-link>
+      </nuxt-link>
       <div class="collapse navbar-collapse justify-content-end">
         <ul class="navbar-nav">
           <li v-if="username">
@@ -15,7 +15,7 @@
             </a>
           </li>
           <li v-if="!username">
-            <router-link
+            <nuxt-link
               v-if="!username"
               tag="a"
               class="nav-link"
@@ -23,10 +23,10 @@
               exact
             >
               Signin
-            </router-link>
+            </nuxt-link>
           </li>
           <li v-if="!username">
-            <router-link
+            <nuxt-link
               v-if="!username"
               tag="a"
               class="nav-link"
@@ -34,7 +34,7 @@
               exact
             >
               Signup
-            </router-link>
+            </nuxt-link>
           </li>
         </ul>
       </div>

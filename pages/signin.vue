@@ -3,17 +3,6 @@
     <div class="col-md-6 offset-md-3 mt-3">
       <form autocomplete="off" @submit.stop.prevent="handleSubmit">
         <div class="form-group">
-          <label for="username">Username</label>
-          <b-form-input
-            id="username"
-            v-model="username"
-            type="text"
-            autofocus
-            placeholder="Enter your username"
-            required
-          />
-        </div>
-        <div class="form-group">
           <label for="email">Email</label>
           <b-form-input
             id="email"
@@ -39,8 +28,8 @@
         </div>
         <button :disabled="loading" type="submit" class="btn btn-primary btn-block mt-3">Submit</button>
         <p class="text-center mt-3">
-          Already have an account?
-          <nuxt-link :to="{ name: 'signin'}" tag="a">Login</nuxt-link>
+          No account yet
+          <nuxt-link :to="{ name: 'signup'}" tag="a">Register</nuxt-link>
         </p>
       </form>
     </div>
@@ -58,7 +47,6 @@ export default {
         return {
             email: '',
             password: '',
-            username: '',
             loading: false
         }
     },
@@ -66,17 +54,13 @@ export default {
         async handleSubmit() {
             try {
                 this.loading = true
-                const response = await strapi.register(
-                    this.username,
-                    this.email,
-                    this.password
-                )
+                const response = await strapi.login(this.email, this.password)
                 this.loading = false
                 this.setUser(response.user)
-                this.$router.push('/')
+                this.$router.go(-1)
             } catch (err) {
                 this.loading = false
-                alert(err.message || 'An error occurred.')
+                alert(err.message || 'An error occurred')
             }
         },
         ...mapMutations({
